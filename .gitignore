@@ -11,3 +11,9 @@
 *.csproj
 *.sln
 *.user
+[Aa]ssets/AssetStoreTools*
+*.pidb
+*.mdb
+*.opendb
+*.VC.db
+*.VC.VC.opendb
