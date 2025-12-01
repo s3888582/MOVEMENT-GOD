@@ -3423,7 +3423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 963194227}
-  forwardSpeed: 6
+  forwardSpeed: 5
   jumpPower: 7
   gravity: 25
   lookSpeed: 2
@@ -3432,10 +3432,10 @@ MonoBehaviour:
   crouchHeight: 1
   crouchSpeed: 3
   groundAccel: 50
-  airAccel: 3
-  strafeAccel: 15
-  airControl: 0.3
-  turnSpeedThreshold: 4
+  airAccel: 7
+  strafeAccel: 5
+  airControl: 1
+  turnSpeedThreshold: 1
   minTurnAccelMultiplier: 0.1
   friction: 8
   maxSpeed: 50

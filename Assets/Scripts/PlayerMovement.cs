@@ -16,12 +16,12 @@ public class PlayerMovement : MonoBehaviour {
 
     // CS-style tuning variables for bhop/strafing
     public float groundAccel = 50f;  // how fast we accelerate on ground
-    public float airAccel = 3f;     // how fast we accelerate in air
-    public float strafeAccel = 25f;  // boost when strafing perpendicular (bhop gain)
-    public float airControl = 1f;  // how much air control (tweak for feel)
+    public float airAccel = 15f;     // how fast we accelerate in air
+    public float strafeAccel = 60f;  // boost when strafing perpendicular (bhop gain)
+    public float airControl = 2.5f;  // how much air control (tweak for feel)
     // turning suppression: fast mouse yaw reduces air acceleration (CS-like)
-    public float turnSpeedThreshold = 4f; // mouseX*lookSpeed at which suppression reaches minimum
-    public float minTurnAccelMultiplier = 0.05f; // minimum multiplier applied to air accel when turning fast
+    public float turnSpeedThreshold = 15f; // mouseX*lookSpeed at which suppression reaches minimum
+    public float minTurnAccelMultiplier = 1.0f; // minimum multiplier applied to air accel when turning fast (1.0 = no suppression)
     public float friction = 8f;      // ground slowing when no input
     public float maxSpeed = 50f;      // cap horizontal speed
 
