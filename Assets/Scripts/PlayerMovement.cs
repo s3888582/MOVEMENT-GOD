@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerMovement : MonoBehaviour
-{
+public class PlayerMovement : MonoBehaviour {
     public Camera playerCamera;
-    public float walkSpeed = 6f;
+    public float forwardSpeed = 6f;
     public float jumpPower = 7f;
     public float gravity = 10f;
     public float lookSpeed = 2f;
@@ -31,8 +30,8 @@ public class PlayerMovement : MonoBehaviour
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
 
-        float curSpeedX = canMove ? walkSpeed * Input.GetAxis("Vertical") : 0; // x-axis implies A/D keys
-        float curSpeedY = canMove ? walkSpeed * Input.GetAxis("Horizontal") : 0; // y-axis implies jump
+        float curSpeedX = canMove ? forwardSpeed * Input.GetAxis("Vertical") : 0; // x-axis implies A/D keys
+        float curSpeedY = canMove ? forwardSpeed * Input.GetAxis("Horizontal") : 0; // y-axis implies jump
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
@@ -48,10 +47,10 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.R) && canMove) {
             characterController.height = crouchHeight;
-            walkSpeed = crouchSpeed;
+            forwardSpeed = crouchSpeed;
         } else {
             characterController.height = defaultHeight;
-            walkSpeed = 6f;
+            forwardSpeed = 6f;
         }
 
         characterController.Move(moveDirection * Time.deltaTime);
