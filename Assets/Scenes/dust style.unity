@@ -2218,23 +2218,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965bada41f7a5544780d91a094c49997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 291867387}
   forwardSpeed: 5
-  jumpPower: 7
-  gravity: 25
-  lookSpeed: 2
-  lookXLimit: 45
-  defaultHeight: 2
-  crouchHeight: 1
-  crouchSpeed: 3
-  groundAccel: 50
-  airAccel: 7
-  strafeAccel: 5
-  airControl: 1
-  turnSpeedThreshold: 1
-  minTurnAccelMultiplier: 0.1
-  friction: 8
-  maxSpeed: 50
+  gravity: -30
+  jumpHeight: 1
+  mouseSensitivity: 2
+  playerCamera: {fileID: 291867389}
 --- !u!54 &393421222
 Rigidbody:
   m_ObjectHideFlags: 0
