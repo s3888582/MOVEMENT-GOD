@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1.01
   m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.45950076, g: 0.4716981, b: 0.1713243, a: 1}
+  m_SubtractiveShadowColor: {r: 0.4697548, g: 0.4811321, b: 0.19290674, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: dfc6095e342d56d49be1cc3241e29e93, type: 2}
   m_HaloStrength: 1
   m_FlareStrength: 1
@@ -1723,7 +1723,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 70
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -7087,19 +7087,19 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 1}
-  m_Intensity: 0.8
+  m_Color: {r: 0.65944284, g: 0.6886792, b: 0.6621007, a: 1}
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
-    m_Resolution: 0
+    m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 0.43
-    m_Bias: 0.04
-    m_NormalBias: 0.4
+    m_Strength: 0.5
+    m_Bias: 0.01
+    m_NormalBias: 0.01
     m_NearPlane: 0.2
     m_CullingMatrixOverride:
       e00: 1
