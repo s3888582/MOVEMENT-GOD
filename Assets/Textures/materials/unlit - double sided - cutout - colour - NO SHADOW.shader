@@ -67,7 +67,7 @@ Shader "Custom/UnlitTwoSidedCutoutTintedShadow_Fog"
         }
 
         // -----------------------
-        // SHADOW CASTER PASS
+        // SHADOW CASTER PASS (Fixed for Alpha Cutout Shadows)
         // -----------------------
         Pass
         {
@@ -101,7 +101,6 @@ Shader "Custom/UnlitTwoSidedCutoutTintedShadow_Fog"
             {
                 float alpha = tex2D(_MainTex, i.uv).a;
                 clip(alpha - _Cutoff);
-
                 SHADOW_CASTER_FRAGMENT(i)
             }
             ENDCG
