@@ -1,4 +1,4 @@
-Shader "Custom/UnlitTwoSidedCutoutTintShadow"
+Shader "Custom/UnlitTwoSidedCutoutTintShadow_Fog"
 {
     Properties
     {
@@ -15,44 +15,60 @@ Shader "Custom/UnlitTwoSidedCutoutTintShadow"
         ZWrite On
         Blend Off
 
-        // --- MAIN PASS ---
+        // -----------------------
+        // MAIN PASS (Unlit + Fog)
+        // -----------------------
         Pass
         {
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
+            #pragma multi_compile_fog
             #include "UnityCG.cginc"
 
             sampler2D _MainTex;
             float4 _Color;
             float _Cutoff;
 
-            struct appdata {
+            struct appdata
+            {
                 float4 vertex : POSITION;
                 float2 uv : TEXCOORD0;
             };
 
-            struct v2f {
+            struct v2f
+            {
                 float2 uv : TEXCOORD0;
                 float4 vertex : SV_POSITION;
+                UNITY_FOG_COORDS(1)
             };
 
-            v2f vert (appdata v) {
+            v2f vert (appdata v)
+            {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = v.uv;
+                UNITY_TRANSFER_FOG(o, o.vertex);
                 return o;
             }
 
-            fixed4 frag (v2f i) : SV_Target {
+            fixed4 frag (v2f i) : SV_Target
+            {
                 fixed4 tex = tex2D(_MainTex, i.uv);
                 clip(tex.a - _Cutoff);
-                return tex * _Color;
+
+                fixed4 col = tex * _Color;
+
+                UNITY_APPLY_FOG(i.fogCoord, col);
+
+                return col;
             }
             ENDCG
         }
 
-        // --- SHADOW CASTER PASS ---
+        // -----------------------
+        // SHADOW CASTER PASS
+        // -----------------------
         Pass
         {
             Tags { "LightMode"="ShadowCaster" }
@@ -67,7 +83,8 @@ Shader "Custom/UnlitTwoSidedCutoutTintShadow"
             sampler2D _MainTex;
             float _Cutoff;
 
-            struct v2f {
+            struct v2f
+            {
                 V2F_SHADOW_CASTER;
                 float2 uv : TEXCOORD1;
             };
@@ -84,6 +101,7 @@ Shader "Custom/UnlitTwoSidedCutoutTintShadow"
             {
                 float alpha = tex2D(_MainTex, i.uv).a;
                 clip(alpha - _Cutoff);
+
                 SHADOW_CASTER_FRAGMENT(i)
             }
             ENDCG
